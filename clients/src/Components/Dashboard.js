@@ -3,7 +3,7 @@ import TimezoneSelect from "react-timezone-select";
 import { useNavigate } from "react-router-dom";
 import {time} from "../utils/resource";
 import {toast} from "react-toastify";
-import { handleCreateSchedule } from "../src/utils/resource";
+import { handleCreateSchedule } from "../utils/resource";
  
 const handleSaveSchedule = () => {
     if(JSON.stringify(selectedTimezone) !== "{}") {
