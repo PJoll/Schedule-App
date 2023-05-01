@@ -57,7 +57,17 @@ app.post("/schedule/create", (req, res) => {
     console.log(req.body)
 })
 app.get("/schedule/:id", (req, res) => {
-    
+    const {id} =req.params;
+    const result = database.filter((db) => db.id === id);
+    if(result.length !== 1){
+        return res.json({
+            message: "Schedule succeffully retrieved",
+            schedules: result[0].schedule,
+            username: result[0].username,
+            timezone: result[0].timezone,
+        })
+    }
+    return res.json({error_message: "An Error occured.... Try signing in again"});
 })
 
 
