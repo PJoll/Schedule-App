@@ -1,5 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { fetchBookingDetails } from "../src/utils/resource";
+
+const [scheddules, setSchedules] = useState([]);
+const [timezone, setTimezone] = useState("");
+const [error, setError] = useState(false);
+const [receiverEmail, setReceiverEmail] = useState("");
+
+useEffect(() => {
+    fetchBookingDetails(
+        user,
+        setError,
+        setTimezone,
+        setSchedules,
+        setReceiverEmail
+
+    );
+}, [user]);
+if(error){
+    return <ErrorPage error={"User does Not exist"} />;
+}
 
 const BookUser = () => {
   const [fullName, setFullName] = useState("");

@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export async function handleRegister(email,username,password){
     try {
         const request= await fetch("http://localhost:4000/register", {
@@ -72,6 +74,37 @@ export async function handleCreateSchedule(selectedTimezone, schedule, navigate)
         
     }
 }
+export async function fetchBookingDetails(
+    user,
+    setError,
+    setTimezone,
+    setSchedules,
+    setReceiverEmail
+){
+   fetch(`http://localhost:4000/schedules/${user}`, {
+         method: "POST",
+            body: JSON.stringify({
+                username: user,
+            }),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+   })
+    .then((res) => res.json())
+    .then((data) => {
+        if(data.error_message){
+            toast.error(data.error_message);
+            setError(true);
+        } else{
+            setTimezone(data.timezone.label);
+            setSchedules(data.schedules);
+            setReceiverEmail(data.receiverEmail);
+        }
+    })
+    .catch((err) => console.error(err));
+}
+
 export const time = [
     {id:"null", t:"Select"},
     {id:"7", t:"7:00 AM"},
