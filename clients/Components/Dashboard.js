@@ -3,8 +3,22 @@ import TimezoneSelect from "react-timezone-select";
 import { useNavigate } from "react-router-dom";
 import {time} from "../utils/resource";
 import {toast} from "react-toastify";
+import { handleCreateSchedule } from "../src/utils/resource";
+ 
+const handleSaveSchedule = () => {
+    if(JSON.stringify(selectedTimezone) !== "{}") {
+        handleCreateSchedule(selectedTimezone, schedule, navigate);
+    } else{
+        toast.error("Please select a timezone");
+    }
+}
 
 const Dashboard = () => {
+    useEffect(() => {
+        if (!localStorage.getItem("_id")) {
+            navigate("/");
+        }
+    }, [navigate]);
     const [schedule, setSchedule] = useState([
         {day:"Sun", startTime:"", endTime:""},
         {day:"Mon", startTime:"", endTime:""},

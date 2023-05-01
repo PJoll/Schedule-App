@@ -2,6 +2,17 @@ import React,{useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {handleRegister} from "../utils/resource";
 
+const navigate = useNavigate();
+const handleSubmit = (e) => {
+    e.preventDefault();
+    if(username.trim() && password.trim() && email.trim()) {
+        handleRegister(email,username,password, navigate);
+        setPassword("");
+        setUsername("");
+        setEmail("");
+    };
+};
+
 const Signup = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

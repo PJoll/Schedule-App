@@ -1,5 +1,17 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import {handleLogin} from "../utils/resource";
+
+const navigate = useNavigate();
+const handleSubmit = (e) => {
+    e.preventDefault();
+    if(username.trim() && password.trim()) {
+        handleLogin(username,password, navigate);
+        setPassword("");
+        setUsername("");
+    };
+}
+
 
 const Login = () => {
     const [username, setUsername] = useState("");
