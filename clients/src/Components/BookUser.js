@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { sendEmail } from "../utils/resource";
+import ErrorPage from "./ErrorPage";
 import { fetchBookingDetails } from "../utils/resource";
 
 const BookUser = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [scheddules, setSchedules] = useState([]);
+  const [schedules, setSchedules] = useState([]);
+  const [duration, setDuration] = useState(""); 
   const [timezone, setTimezone] = useState("");
   const [error, setError] = useState(false);
   const [receiverEmail, setReceiverEmail] = useState("");
@@ -14,7 +17,7 @@ const BookUser = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendEmail(email, fullName, message);
+    sendEmail(receiverEmail,email, fullName, message,duration);
     setFullName("");
     setMessage("");
   };
@@ -64,7 +67,7 @@ const BookUser = () => {
         <label htmlfor="session">
           Select your preffered session- {timezone}
         </label>
-        <select name="duration" onChange={(e) => setDuration(e.target.value)}>
+        <select name='duration' onChange={(e) => setDuration(e.target.value)}>
           {schedules.map((schedule) => (
             <option
               value={`${schedule.day} - ${schedule.startTime} : ${schedule.endTime}`}
