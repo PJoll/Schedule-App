@@ -27,6 +27,16 @@ const Login = () => {
           onChange={(e) => setUsername(e.target.value)}
           className="username"
         />
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          type="password"  
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="password"
+        />
+
         <button className="loginButton">LOG IN</button>
         <p style={{ textAlign: "center", marginTop: "30px" }}>
           Donthave an account??{""}

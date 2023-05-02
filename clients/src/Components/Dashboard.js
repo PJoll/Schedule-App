@@ -55,7 +55,7 @@ const Dashboard = () => {
 
       <main className="dashboard__main">
         <h2 className="dashboard__heading">Select Your Availability</h2>
-        <div ClassName="timezone__wrapper">
+        <div className="timezone__wrapper">
           <p>Pick your Timezone</p>
           <TimezoneSelect
             value={selectedTimezone}
