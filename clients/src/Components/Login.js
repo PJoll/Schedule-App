@@ -30,7 +30,7 @@ const Login = () => {
         <label htmlFor="password">Password</label>
         <input
           id="password"
-          type="password"  
+          type="password"
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -39,10 +39,12 @@ const Login = () => {
 
         <button className="loginButton">LOG IN</button>
         <p style={{ textAlign: "center", marginTop: "30px" }}>
-          Donthave an account??{""}
-          <Link className="link" to={"/register"}>
-            Create A New Account
-          </Link>
+          Don't have an account?? {""}
+          <button className="registerButton">
+            <Link className="link" to={"/register"}>
+              Register
+            </Link>
+          </button>
         </p>
       </form>
     </main>

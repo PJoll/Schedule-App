@@ -50,9 +50,15 @@ button {
 }
 .loginButton,
 .signupButton {
-	width: 200px;
+	width: 400px;
 	padding: 15px;
 	background-color: #e6ddc4;
+}
+.registerButton{
+	width: 100px;
+	padding: 15px;
+	background-color: #e6ddc4;
+	
 }
 .dashboard__nav {
 	background-color: #c58940;
